@@ -5,6 +5,7 @@ node {
     def BRANCHNAME = "main"
 
     stage("Pull Docker Image"){
+        sh "docker images"
         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com"
         sh "docker pull ${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com/tools:latest"
     }
