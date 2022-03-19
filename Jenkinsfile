@@ -17,7 +17,7 @@ node {
     }
     withDockerContainer(image: '${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com/tools:latest'){
         stage("Apply") {
-            sh "terraform destroy -auto-approve"
+            sh "terraform apply -auto-approve"
         }
     }
     stage("Email notification") {
