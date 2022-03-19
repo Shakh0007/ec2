@@ -3,10 +3,12 @@ properties([parameters([string(defaultValue: '713287746880', description: 'Pleas
 node {
     def REPOLOCATION = "https://github.com/farrukh90/ec2.git"
     def BRANCHNAME = "main"
-
-    stage("Pull Docker Image"){
+    
+    stage("Clean Up") {
         sh "docker images"
         sh "docker image prune --force"
+    }
+    stage("Pull Docker Image"){
         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com"
         sh "docker pull ${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com/tools:latest"
     }
