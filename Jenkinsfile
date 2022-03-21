@@ -9,8 +9,8 @@ node {
         sh "docker image prune --force"
     }
     stage("Pull Docker Image"){
-        sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 038856091169.dkr.ecr.us-east-1.amazonaws.com"
-        sh "docker pull ${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com/tools:latest"
+        sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com"
+        sh "docker pull ${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com/tools"
     }
     withDockerContainer(image: '${AWS_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com/tools:latest'){
         stage("Clone") {
