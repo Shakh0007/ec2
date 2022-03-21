@@ -1,7 +1,7 @@
 properties([parameters([string(defaultValue: '038856091169', description: 'Please provide your AWS account ', name: 'AWS_ACCOUNT', trim: true)])])
 
 node {
-    def REPOLOCATION = "https://github.com/farrukh90/ec2.git"
+    def REPOLOCATION = "https://github.com/Shakh0007/ec2.git"
     def BRANCHNAME = "main"
     
     stage("Clean Up") {
