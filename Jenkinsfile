@@ -11,7 +11,7 @@ node {
     stage("Install Terraform") {
         sh "wget https://releases.hashicorp.com/terraform/0.14.11/terraform_0.14.11_linux_amd64.zip"
         sh "unzip terraform_0.14.11_linux_amd64.zip"
-        sh "mv terraform /usr/bin"
+        sh "sudo mv terraform /usr/bin"
         sh "terraform version"
         sh "rm -rf terraform_0.14.11_linux_amd64.zip"
     }
